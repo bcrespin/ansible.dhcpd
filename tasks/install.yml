@@ -5,5 +5,6 @@
 
 - debug: var=dhcpd_package_name
 
-- name: install dhcpd package 
-  openbsd_pkg: name={{ dhcpd_package_name }} state=present
+- name: install required package 
+  openbsd_pkg: name={{ item }} state=present
+  with_items: [ '{{ dhcpd_package_name }}' ]
